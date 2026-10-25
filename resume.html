@@ -453,15 +453,17 @@
       <p class="tagline">B.Tech CSE · Graphic Era University · Dehradun, India</p>
       <div class="contact-row">
         <a href="mailto:kashyapbipanshu@gmail.com"><span class="icon">✉</span> kashyapbipanshu@gmail.com</a>
+        <a href="tel:+919610004359"><span class="icon">☎</span> +91 96100 04359</a>
         <a href="https://github.com/bipanshu1001" target="_blank" rel="noopener"><span class="icon">⌘</span> GitHub</a>
         <a href="https://www.linkedin.com/in/bipanshu-kashyap-925785321" target="_blank" rel="noopener"><span class="icon">in</span> LinkedIn</a>
+        <a href="Bipanshu_Kashyap_Resume.pdf" download><span class="icon">⬇</span> Download PDF</a>
       </div>
     </div>
 
     <!-- ====== SUMMARY ====== -->
     <h2 class="section-title"><span class="emoji">◆</span> Summary</h2>
     <div class="summary">
-      Driven third-year Computer Science student with hands-on experience building machine-learning pipelines and full-stack applications. Skilled in designing CNN-based vision systems with real-time inference, graph-based recommendation engines, and plugin-style platform architectures. Strong algorithmic foundation with a 9.00 GPA. Actively seeking a software engineering or machine learning internship to apply and grow these skills in a production environment.
+      B.Tech Computer Science student at Graphic Era University (GPA 9.00 / 10.00) with AWS-certified expertise in machine-learning pipelines and generative AI. Proficient in Python, C++, Flask, TensorFlow and Node.js, with hands-on experience building AI-powered, full-stack and algorithm-driven applications. Seeking a software engineering or machine learning internship to contribute to production-scale systems. Scored 98.00% in Class X and completed 2 AWS certifications within the first year of undergraduate study.
     </div>
 
     <!-- ====== EDUCATION ====== -->
@@ -473,14 +475,33 @@
         <p class="detail">Graphic Era University, Dehradun &nbsp;·&nbsp; GPA: <span class="highlight">9.00 / 10.00</span></p>
       </div>
       <div class="edu-card">
-        <h3>Class XII — RBSE</h3>
+        <h3>Class XII — R.B.S.E</h3>
         <span class="meta">2023</span>
-        <p class="detail">Percentage: <span class="highlight">89.40%</span></p>
+        <p class="detail">Vidhya Bharti Senior Secondary School, Rajasthan &nbsp;·&nbsp; <span class="highlight">89.40%</span></p>
       </div>
       <div class="edu-card">
-        <h3>Class X — RBSE</h3>
+        <h3>Class X — R.B.S.E</h3>
         <span class="meta">2021</span>
-        <p class="detail">Percentage: <span class="highlight">98.00%</span></p>
+        <p class="detail">Adarsh Vidhya Mandir Secondary School, Rajasthan &nbsp;·&nbsp; <span class="highlight">98.00%</span></p>
+      </div>
+    </div>
+
+    <!-- ====== EXPERIENCE ====== -->
+    <h2 class="section-title"><span class="emoji">◆</span> Experience</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <header>
+          <h3>Freelance Web Developer — Self-Employed</h3>
+          <span class="date">May – Sep 2026 · Remote</span>
+        </header>
+        <p>Designed, built and deployed 2 live client websites end-to-end — <strong>Sheeraj Events</strong> (a luxury wedding and event-planning business) and <strong>Shaitan Singh Vavdi</strong> (a professional stage anchor's personal brand site) — owning requirements gathering, UI design, development and deployment.</p>
+        <p>Developed responsive, mobile-first interfaces with service showcases, image galleries and inquiry/contact forms, with integrated WhatsApp and social-media links to drive client bookings. Iterated directly with business owners through to production launch.</p>
+        <div class="tags">
+          <span class="lang">HTML</span>
+          <span class="lang">CSS</span>
+          <span class="lang">JavaScript</span>
+          <span class="tool">Responsive Design</span>
+        </div>
       </div>
     </div>
 
@@ -490,12 +511,29 @@
 
       <div class="project-card">
         <header>
+          <h3>ADOC — Write-Stall Mitigation for RocksDB</h3>
+          <span class="date">Oct 2026 – Present</span>
+        </header>
+        <p><strong>Problem:</strong> RocksDB stalls writes under heavy load when its LSM-tree components overflow.</p>
+        <p><strong>Built:</strong> Reproduced the ADOC control algorithm (USENIX FAST '23) in C++17. Polls the engine once a second, classifies the overflowing component (MemTable, Level-0 or pending-compaction redundancy) and auto-retunes 2 knobs — background thread count and batch size — via an AIMD policy inspired by TCP congestion control, wired in through a custom <code>rocksdb::EventListener</code>.</p>
+        <p><strong>Result:</strong> Cut write-stall time from 15.63 s to 0 s while sustaining 138 kOps/s on a 60-second, 4-writer benchmark (RocksDB 9.11). Built a synthetic LSM dataflow simulator and a 23-case conformance suite, all passing.</p>
+        <div class="tags">
+          <span class="lang">C++17</span>
+          <span class="tool">RocksDB</span>
+          <span class="tool">CMake</span>
+          <span class="tool">AIMD Control</span>
+          <span class="tool">LSM-Tree</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <header>
           <h3>Emotion Detection System</h3>
           <span class="date">Feb – May 2026</span>
         </header>
         <p><strong>Problem:</strong> Recognise facial emotion live from a webcam feed, across 7 expression classes.</p>
-        <p><strong>Built:</strong> A 5-layer CNN with batch normalisation, trained on FER-2013 (35,887 images). OpenCV face detection and cropping, augmentation (rotation, flip, zoom) and dropout for robustness to lighting and pose.</p>
-        <p><strong>Result:</strong> Under 200 ms per frame in live inference on consumer hardware.</p>
+        <p><strong>Built:</strong> A 5-layer CNN with batch normalisation, trained on FER-2013 (35,887 images) over 50 epochs. OpenCV face detection and cropping, augmentation (rotation, flip, zoom) and dropout for robustness to lighting and pose.</p>
+        <p><strong>Result:</strong> 90%+ validation accuracy, with under 200 ms per frame in live inference on consumer hardware.</p>
         <div class="tags">
           <span class="ml">Python</span>
           <span class="ml">TensorFlow</span>
@@ -563,7 +601,7 @@
         </div>
       </div>
       <div class="skill-card">
-        <h3>Machine Learning</h3>
+        <h3>Machine Learning &amp; AI</h3>
         <div class="tags">
           <span class="ml">TensorFlow</span>
           <span class="ml">Keras</span>
@@ -571,6 +609,10 @@
           <span class="ml">OpenCV</span>
           <span class="ml">NumPy</span>
           <span class="ml">Pandas</span>
+          <span class="ml">CNNs</span>
+          <span class="ml">NLP</span>
+          <span class="ml">Supervised Learning</span>
+          <span class="ml">Generative AI</span>
           <span class="ml">PyTorch (learning)</span>
         </div>
       </div>
@@ -589,8 +631,10 @@
         <h3>Cloud & AI Platforms</h3>
         <div class="tags">
           <span class="tool">AWS SageMaker</span>
-          <span class="tool">Generative AI on AWS</span>
+          <span class="tool">AWS ML Pipeline</span>
+          <span class="tool">AWS Generative AI</span>
           <span class="tool">Gemini API</span>
+          <span class="tool">Claude Code</span>
         </div>
       </div>
       <div class="skill-card">
@@ -599,6 +643,9 @@
           <span class="tool">Data Structures & Algorithms</span>
           <span class="tool">Graph Algorithms</span>
           <span class="tool">OOP</span>
+          <span class="tool">Feature Engineering</span>
+          <span class="tool">Model Evaluation</span>
+          <span class="tool">Cross-Validation</span>
           <span class="tool">Probability & Statistics</span>
           <span class="tool">Linear Algebra</span>
         </div>

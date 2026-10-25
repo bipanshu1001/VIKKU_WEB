@@ -84,6 +84,9 @@
         <li><strong>Based in</strong> Dehradun, India</li>
         <li><strong>Looking for</strong> SWE or ML internship</li>
       </ul>
+      <h3>Experience</h3>
+      <p><strong>Freelance Web Developer</strong> · Self-employed · May–Sep 2026 · Remote</p>
+      <p>Designed, built and deployed 2 live client websites end-to-end — Sheeraj Events (a luxury wedding and event-planning business) and Shaitan Singh Vavdi (a stage anchor's personal brand). Responsive, mobile-first interfaces with service showcases, galleries and inquiry forms, plus WhatsApp and social links to drive bookings. Owned requirements, UI design, development and deployment.</p>
       <h3>Interests &amp; Hobbies</h3>
       <p>Problem-solving &amp; competitive coding · Exploring new tech &amp; side projects · Reading tech blogs &amp; research papers · Gaming · Music</p>
       <h3>Currently Learning</h3>
@@ -95,10 +98,19 @@
       <p class="muted">Problem → what I built → how I know it worked.</p>
 
       <article class="card">
+        <header><h3>ADOC — Write-Stall Mitigation for RocksDB</h3><span class="date">Oct 2026 – present</span></header>
+        <p><strong>Problem:</strong> RocksDB stalls writes under heavy load when its LSM-tree components overflow.</p>
+        <p><strong>Built:</strong> reproduced the ADOC control algorithm (USENIX FAST '23) in C++17. Polls the engine once a second, classifies the overflowing component (MemTable, Level-0 or pending compaction) and auto-retunes two knobs — background threads and batch size — with an AIMD policy inspired by TCP congestion control, wired in through a custom <code>rocksdb::EventListener</code>.</p>
+        <p><strong>Result:</strong> cut write-stall time from 15.63 s to 0 s while sustaining 138 kOps/s on a 60 s, 4-writer benchmark (RocksDB 9.11). 23-case conformance suite, all passing.</p>
+        <p class="tags"><span>C++17</span><span>RocksDB</span><span>CMake</span><span>AIMD control</span><span>LSM-tree</span></p>
+        <p class="links"><a href="https://github.com/bipanshu1001">Code ↗</a></p>
+      </article>
+
+      <article class="card">
         <header><h3>Emotion Detection System</h3><span class="date">Feb–May 2026</span></header>
         <p><strong>Problem:</strong> recognise facial emotion live from a webcam feed, across 7 classes.</p>
-        <p><strong>Built:</strong> a 5-layer CNN with batch normalisation, trained on FER-2013 (35,887 images). OpenCV face detection and cropping, augmentation (rotation, flip, zoom) and dropout for robustness to lighting and pose.</p>
-        <p><strong>Result:</strong> under 200 ms per frame in live inference on consumer hardware.</p>
+        <p><strong>Built:</strong> a 5-layer CNN with batch normalisation, trained on FER-2013 (35,887 images) over 50 epochs. OpenCV face detection and cropping, augmentation (rotation, flip, zoom) and dropout for robustness to lighting and pose.</p>
+        <p><strong>Result:</strong> 90%+ validation accuracy, under 200 ms per frame in live inference on consumer hardware.</p>
         <p class="tags"><span>Python</span><span>TensorFlow</span><span>Keras</span><span>OpenCV</span></p>
         <p class="links"><a href="https://github.com/bipanshu1001">Code ↗</a></p>
       </article>
@@ -133,10 +145,10 @@
       <p class="muted">Every book on the shelf is something I've used in a project above.</p>
       <div class="skill-groups">
         <div><h3>Languages</h3><p class="tags"><span>Python</span><span>C++</span><span>C</span><span>JavaScript</span></p></div>
-        <div><h3>Machine learning</h3><p class="tags"><span>TensorFlow</span><span>Keras</span><span>scikit-learn</span><span>OpenCV</span><span>NumPy</span><span>Pandas</span><span>PyTorch (learning)</span></p></div>
+        <div><h3>Machine learning</h3><p class="tags"><span>TensorFlow</span><span>Keras</span><span>scikit-learn</span><span>OpenCV</span><span>NumPy</span><span>Pandas</span><span>CNNs</span><span>NLP</span><span>PyTorch (learning)</span></p></div>
         <div><h3>Backend &amp; web</h3><p class="tags"><span>Node.js</span><span>Express</span><span>Flask</span><span>SQLite</span><span>REST APIs</span><span>WebSockets</span></p></div>
-        <div><h3>Cloud &amp; AI platforms</h3><p class="tags"><span>AWS SageMaker</span><span>Generative AI on AWS</span><span>Gemini API</span></p></div>
-        <div><h3>Foundations</h3><p class="tags"><span>Data structures &amp; algorithms</span><span>Graph algorithms</span><span>OOP</span><span>Probability &amp; statistics</span><span>Linear algebra</span></p></div>
+        <div><h3>Cloud &amp; AI platforms</h3><p class="tags"><span>AWS SageMaker</span><span>AWS ML Pipeline</span><span>Generative AI on AWS</span><span>Gemini API</span><span>Claude Code</span></p></div>
+        <div><h3>Foundations</h3><p class="tags"><span>Data structures &amp; algorithms</span><span>Graph algorithms</span><span>OOP</span><span>Probability &amp; statistics</span><span>Linear algebra</span><span>Feature engineering</span><span>Model evaluation</span></p></div>
         <div><h3>Tools</h3><p class="tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>MATLAB</span></p></div>
       </div>
     </section>
@@ -153,6 +165,8 @@
         <li><span>Dec 2025</span>AWS course: Developing Generative AI Solutions</li>
         <li><span>Jan 2026</span>Friend Recommendation System (C++, Node.js)</li>
         <li><span>Feb 2026</span>Emotion Detection System (TensorFlow, OpenCV)</li>
+        <li><span>May 2026</span>Freelance Web Developer — 2 live client sites</li>
+        <li><span>Oct 2026</span>ADOC: write-stall mitigation for RocksDB (C++17)</li>
         <li class="next"><span>Next</span>Software engineering / ML internship</li>
       </ol>
     </section>
@@ -171,6 +185,7 @@
       <p>Open to internship opportunities in software engineering and machine learning. Email is the fastest way to reach me.</p>
       <p class="cta">
         <a class="btn primary" href="mailto:kashyapbipanshu@gmail.com">kashyapbipanshu@gmail.com</a>
+        <a class="btn" href="tel:+919610004359">+91 96100 04359</a>
         <a class="btn" href="https://github.com/bipanshu1001">GitHub</a>
         <a class="btn" href="https://www.linkedin.com/in/bipanshu-kashyap-925785321">LinkedIn</a>
       </p>

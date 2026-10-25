@@ -682,14 +682,14 @@ function drawTerminal(g, w, h, cursor) {
 
   const lines = [
     ['#7ee787', '$ ls projects/'],
+    ['#e6edf3', 'adoc-rocksdb/'],
+    ['#8b949e', '    C++17 · AIMD tuner · 0 s write stalls'],
     ['#e6edf3', 'emotion-detection/'],
-    ['#8b949e', '    CNN · OpenCV · live webcam'],
+    ['#8b949e', '    CNN · OpenCV · 90%+ accuracy'],
     ['#e6edf3', 'friend-recommender/'],
     ['#8b949e', '    C++ graph Top-K · Node.js · WebSockets'],
     ['#e6edf3', 'gamehub/'],
     ['#8b949e', '    Python · plugin architecture'],
-    ['#e6edf3', 'train-reservation/'],
-    ['#8b949e', '    C++ · file persistence'],
     ['#7ee787', '$ open --details'],
   ];
   g.font = `30px ${MONO}`;
@@ -781,12 +781,13 @@ function drawCalendar(g, w, h) {
   g.fillStyle = '#fff'; g.textAlign = 'center';
   g.font = `700 44px ${SANS}`; g.fillText('TIMELINE', w / 2, 62);
   g.font = `24px ${SANS}`; g.fillText('2021 → next', w / 2, 96);
-  const rows = [['2021', 'Class X · 98%'], ['2023', 'Class XII · 89.4%'], ['2024', 'B.Tech CSE · GEU'], ['2024', 'Train Reservation'], ['2025', 'GameHub · AWS courses'], ['2026', 'Friend Recommender'], ['2026', 'Emotion Detection'], ['Next', 'SWE / ML internship']];
+  const rows = [['2021', 'Class X · 98%'], ['2023', 'Class XII · 89.4%'], ['2024', 'B.Tech CSE · GEU'], ['2024', 'Train Reservation'], ['2025', 'GameHub · AWS courses'], ['2026', 'Friend Recommender'], ['2026', 'Emotion Detection'], ['2026', 'Freelance Web Dev'], ['2026', 'ADOC · RocksDB tuner'], ['Next', 'SWE / ML internship']];
+  const step = 55;
   g.textAlign = 'left';
   g.strokeStyle = '#d6cfc0'; g.lineWidth = 3;
-  g.beginPath(); g.moveTo(118, 150); g.lineTo(118, 150 + (rows.length - 1) * 64); g.stroke();
+  g.beginPath(); g.moveTo(118, 150); g.lineTo(118, 150 + (rows.length - 1) * step); g.stroke();
   rows.forEach(([year, text], i) => {
-    const y = 150 + i * 64;
+    const y = 150 + i * step;
     const last = i === rows.length - 1;
     g.fillStyle = last ? '#ff9a2e' : '#3d5a80';
     g.beginPath(); g.arc(118, y, 10, 0, Math.PI * 2); g.fill();

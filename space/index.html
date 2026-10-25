@@ -71,6 +71,9 @@
           <li><strong>Focus</strong> ML &amp; computer vision, graph algorithms, backend</li>
           <li><strong>Looking for</strong> SWE or ML internship</li>
         </ul>
+        <h3>Experience</h3>
+        <p><strong>Freelance Web Developer</strong> · Self-employed · May–Sep 2026 · Remote</p>
+        <p class="muted">Designed, built and deployed 2 live client websites end-to-end — Sheeraj Events (luxury wedding &amp; event planning) and Shaitan Singh Vavdi (a stage anchor's personal brand). Responsive, mobile-first interfaces with galleries, inquiry forms and WhatsApp/social links.</p>
         <h3>Interests</h3>
         <p class="muted">Problem-solving &amp; competitive coding · Exploring new tech &amp; side projects · Reading tech blogs &amp; research papers · Gaming · Music</p>
         <h3>Currently Learning</h3>
@@ -84,10 +87,18 @@
         <p class="muted">Each card answers: what problem, what I built, how I know it worked.</p>
         <div class="cards">
           <article class="card">
+            <h3>ADOC — Write-Stall Mitigation for RocksDB</h3>
+            <p><strong>Problem:</strong> RocksDB stalls writes under heavy load when its LSM-tree components overflow.</p>
+            <p><strong>Built:</strong> reproduced the ADOC algorithm (USENIX FAST '23) in C++17; polls the engine every second, classifies the overflow and auto-tunes threads + batch size with an AIMD policy via a custom EventListener.</p>
+            <p><strong>Result:</strong> write-stall time from 15.63 s to 0 s at 138 kOps/s (60 s, 4-writer benchmark); 23-case suite passing.</p>
+            <p class="tags"><span>C++17</span><span>RocksDB</span><span>AIMD</span><span>LSM-tree</span></p>
+            <a href="https://github.com/bipanshu1001">Code ↗</a>
+          </article>
+          <article class="card">
             <h3>Emotion Detection System</h3>
             <p><strong>Problem:</strong> recognise facial emotion live from a webcam, across 7 classes.</p>
             <p><strong>Built:</strong> 5-layer CNN with batch norm on FER-2013 (35,887 images); OpenCV face detection, augmentation, dropout.</p>
-            <p><strong>Result:</strong> under 200 ms per frame in live inference on consumer hardware.</p>
+            <p><strong>Result:</strong> 90%+ validation accuracy, under 200 ms per frame in live inference.</p>
             <p class="tags"><span>TensorFlow</span><span>Keras</span><span>OpenCV</span></p>
             <a href="https://github.com/bipanshu1001">Code ↗</a>
           </article>
@@ -118,10 +129,10 @@
         <p class="muted">Each one is used in a project above.</p>
         <div class="skill-groups">
           <div><h3>Languages</h3><p class="tags"><span>Python</span><span>C++</span><span>C</span><span>JavaScript</span></p></div>
-          <div><h3>Machine learning</h3><p class="tags"><span>TensorFlow</span><span>Keras</span><span>scikit-learn</span><span>OpenCV</span><span>NumPy</span><span>Pandas</span><span>PyTorch (learning)</span></p></div>
+          <div><h3>Machine learning</h3><p class="tags"><span>TensorFlow</span><span>Keras</span><span>scikit-learn</span><span>OpenCV</span><span>NumPy</span><span>Pandas</span><span>CNNs</span><span>NLP</span><span>PyTorch (learning)</span></p></div>
           <div><h3>Backend &amp; Web</h3><p class="tags"><span>Node.js</span><span>Express</span><span>Flask</span><span>SQLite</span><span>REST APIs</span><span>WebSockets</span></p></div>
-          <div><h3>Cloud &amp; AI Platforms</h3><p class="tags"><span>AWS SageMaker</span><span>Generative AI on AWS</span><span>Gemini API</span></p></div>
-          <div><h3>Foundations</h3><p class="tags"><span>Data Structures &amp; Algorithms</span><span>Graph Algorithms</span><span>OOP</span><span>Probability &amp; Statistics</span><span>Linear Algebra</span></p></div>
+          <div><h3>Cloud &amp; AI Platforms</h3><p class="tags"><span>AWS SageMaker</span><span>AWS ML Pipeline</span><span>Generative AI on AWS</span><span>Gemini API</span><span>Claude Code</span></p></div>
+          <div><h3>Foundations</h3><p class="tags"><span>Data Structures &amp; Algorithms</span><span>Graph Algorithms</span><span>OOP</span><span>Probability &amp; Statistics</span><span>Linear Algebra</span><span>Feature Engineering</span><span>Model Evaluation</span></p></div>
           <div><h3>Tools</h3><p class="tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>MATLAB</span></p></div>
         </div>
       </div>
@@ -133,6 +144,7 @@
         <p>Open to software engineering and ML internships. Email is the fastest way to reach me.</p>
         <p class="cta">
           <a class="btn primary" href="mailto:kashyapbipanshu@gmail.com">kashyapbipanshu@gmail.com</a>
+          <a class="btn" href="tel:+919610004359">+91 96100 04359</a>
           <a class="btn" href="https://github.com/bipanshu1001">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/bipanshu-kashyap-925785321">LinkedIn</a>
         </p>
