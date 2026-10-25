@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bipanshu Kashyap — Space</title>
+  <meta name="description" content="Bipanshu Kashyap's portfolio as a journey through space: projects, skills and contact.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='9' fill='%237cf0d4'/><ellipse cx='16' cy='16' rx='15' ry='4' fill='none' stroke='%23ff9d6c' stroke-width='2'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Arriving through the desk window: start black (main.js fades in). Safety net if the 3D never loads.
+    if (location.hash === '#from-desk') {
+      document.documentElement.classList.add('fade');
+      setTimeout(() => document.documentElement.classList.remove('fade'), 3000);
+    }
+  </script>
+
+  <!-- Three.js loaded from a CDN so there is no build step. Pin the version. -->
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="progress" aria-hidden="true"><span></span></div>
+  <div id="fade" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="brand" href="#home">BK<span>.</span></a>
+    <nav aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Back through the window to the desk (index.html one folder up). -->
+  <a class="back-desk" href="../#from-space">← Back to my desk</a>
+
+  <!--
+    Every <section> below = one stop on the flight path (same order as STOPS in main.js).
+    All text is real HTML on purpose: recruiters, screen readers and search engines can read it.
+    Keep it in sync with the desk version in ../index.html.
+  -->
+  <main>
+    <section id="home">
+      <div class="panel hero">
+        <p class="eyebrow">CS undergrad · Graphic Era University</p>
+        <h1>Hi, I'm <em>Bipanshu</em>.</h1>
+        <p class="lead">I build machine-learning and full-stack systems. Looking for a software engineering or ML internship.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">See my projects</a>
+          <a class="btn" href="../resume.html">Resume</a>
+        </div>
+        <p class="hint">Scroll to travel ↓</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="panel">
+        <h2>About</h2>
+        <p>Driven third-year Computer Science student with hands-on experience building machine-learning pipelines and full-stack applications. Skilled in designing CNN-based vision systems with real-time inference, graph-based recommendation engines, and plugin-style platform architectures. Strong algorithmic foundation with a 9.00 GPA.</p>
+        <ul class="facts">
+          <li><strong>Education</strong> B.Tech CSE, Graphic Era University, 2024–2028</li>
+          <li><strong>GPA</strong> 9.00 / 10.00</li>
+          <li><strong>Focus</strong> ML &amp; computer vision, graph algorithms, backend</li>
+          <li><strong>Looking for</strong> SWE or ML internship</li>
+        </ul>
+        <h3>Interests</h3>
+        <p class="muted">Problem-solving &amp; competitive coding · Exploring new tech &amp; side projects · Reading tech blogs &amp; research papers · Gaming · Music</p>
+        <h3>Currently Learning</h3>
+        <p class="muted">PyTorch &amp; deep learning architectures · LLMs, prompt engineering &amp; RAG pipelines</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="panel wide">
+        <h2>Projects</h2>
+        <p class="muted">Each card answers: what problem, what I built, how I know it worked.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>Emotion Detection System</h3>
+            <p><strong>Problem:</strong> recognise facial emotion live from a webcam, across 7 classes.</p>
+            <p><strong>Built:</strong> 5-layer CNN with batch norm on FER-2013 (35,887 images); OpenCV face detection, augmentation, dropout.</p>
+            <p><strong>Result:</strong> under 200 ms per frame in live inference on consumer hardware.</p>
+            <p class="tags"><span>TensorFlow</span><span>Keras</span><span>OpenCV</span></p>
+            <a href="https://github.com/bipanshu1007">Code ↗</a>
+          </article>
+          <article class="card">
+            <h3>Friend Recommendation + Token Economy</h3>
+            <p><strong>Problem:</strong> suggest relevant connections while discouraging spammy requests.</p>
+            <p><strong>Built:</strong> C++ graph Top-K engine (interests + location), token economy, Node/Express REST API on SQLite, WebSocket chat.</p>
+            <p><strong>Result:</strong> API responses under 100 ms.</p>
+            <p class="tags"><span>C++</span><span>Node.js</span><span>SQLite</span></p>
+            <a href="https://github.com/bipanshu1007">Code ↗</a>
+          </article>
+          <article class="card">
+            <h3>GameHub</h3>
+            <p><strong>Problem:</strong> separate game executables with no shared accounts or scores.</p>
+            <p><strong>Built:</strong> one login for 4 games, plugin architecture (1 config file per game), SQLite scoreboards, guest vs registered roles.</p>
+            <p><strong>Result:</strong> a new game integrates in under 30 minutes.</p>
+            <p class="tags"><span>Python</span><span>SQLite</span><span>OOP</span></p>
+            <a href="https://github.com/bipanshu1007">Code ↗</a>
+          </article>
+        </div>
+        <p class="muted small" style="margin-top:1rem">Earlier: Train Reservation System (C++ console app, file persistence), my first DSA project.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="panel">
+        <h2>Skills</h2>
+        <p class="muted">Each one is used in a project above.</p>
+        <div class="skill-groups">
+          <div><h3>Languages</h3><p class="tags"><span>Python</span><span>C++</span><span>C</span><span>JavaScript</span></p></div>
+          <div><h3>Machine learning</h3><p class="tags"><span>TensorFlow</span><span>Keras</span><span>scikit-learn</span><span>OpenCV</span><span>NumPy</span><span>Pandas</span><span>PyTorch (learning)</span></p></div>
+          <div><h3>Backend &amp; Web</h3><p class="tags"><span>Node.js</span><span>Express</span><span>Flask</span><span>SQLite</span><span>REST APIs</span><span>WebSockets</span></p></div>
+          <div><h3>Cloud &amp; AI Platforms</h3><p class="tags"><span>AWS SageMaker</span><span>Generative AI on AWS</span><span>Gemini API</span></p></div>
+          <div><h3>Foundations</h3><p class="tags"><span>Data Structures &amp; Algorithms</span><span>Graph Algorithms</span><span>OOP</span><span>Probability &amp; Statistics</span><span>Linear Algebra</span></p></div>
+          <div><h3>Tools</h3><p class="tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>MATLAB</span></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="panel">
+        <h2>Contact</h2>
+        <p>Open to software engineering and ML internships. Email is the fastest way to reach me.</p>
+        <p class="cta">
+          <a class="btn primary" href="mailto:kashyapbipanshu@gmail.com">kashyapbipanshu@gmail.com</a>
+          <a class="btn" href="https://github.com/bipanshu1007">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/bipanshu-kashyap-925785321">LinkedIn</a>
+        </p>
+        <p class="cta"><a class="btn" href="../#from-space">← Back to my desk</a></p>
+        <p class="muted small">© <span id="year"></span> Bipanshu Kashyap. Built with Three.js.</p>
+      </div>
+    </section>
+  </main>
+
+  <noscript><p class="noscript">3D view needs JavaScript. The content above is still readable.</p></noscript>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

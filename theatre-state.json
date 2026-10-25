@@ -1,0 +1,112 @@
+{
+  "sheetsById": {
+    "Intro": {
+      "staticOverrides": { "byObject": {} },
+      "sequence": {
+        "subUnitsPerUnit": 30,
+        "length": 2.6,
+        "type": "PositionalSequence",
+        "tracksByObject": {
+          "Camera rig": {
+            "trackData": {
+              "intro-orbit": {
+                "type": "BasicKeyframedTrack",
+                "__debugName": "Camera rig:[\"orbit\"]",
+                "keyframes": [
+                  { "id": "io0", "position": 0, "connectedRight": true, "handles": [0.5, 1, 0.45, 0], "type": "bezier", "value": -0.75 },
+                  { "id": "io1", "position": 2.6, "connectedRight": true, "handles": [0.15, 1, 0.5, 0], "type": "bezier", "value": 0 }
+                ]
+              },
+              "intro-lift": {
+                "type": "BasicKeyframedTrack",
+                "__debugName": "Camera rig:[\"lift\"]",
+                "keyframes": [
+                  { "id": "il0", "position": 0, "connectedRight": true, "handles": [0.5, 1, 0.45, 0], "type": "bezier", "value": 1.6 },
+                  { "id": "il1", "position": 2.3, "connectedRight": true, "handles": [0.15, 1, 0.5, 0], "type": "bezier", "value": 0 }
+                ]
+              },
+              "intro-dolly": {
+                "type": "BasicKeyframedTrack",
+                "__debugName": "Camera rig:[\"dolly\"]",
+                "keyframes": [
+                  { "id": "id0", "position": 0, "connectedRight": true, "handles": [0.5, 1, 0.45, 0], "type": "bezier", "value": 2.4 },
+                  { "id": "id1", "position": 2.6, "connectedRight": true, "handles": [0.15, 1, 0.5, 0], "type": "bezier", "value": 1 }
+                ]
+              },
+              "intro-fov": {
+                "type": "BasicKeyframedTrack",
+                "__debugName": "Camera rig:[\"fov\"]",
+                "keyframes": [
+                  { "id": "if0", "position": 0, "connectedRight": true, "handles": [0.5, 1, 0.45, 0], "type": "bezier", "value": 28 },
+                  { "id": "if1", "position": 2.6, "connectedRight": true, "handles": [0.15, 1, 0.5, 0], "type": "bezier", "value": 45 }
+                ]
+              },
+              "intro-roll": {
+                "type": "BasicKeyframedTrack",
+                "__debugName": "Camera rig:[\"roll\"]",
+                "keyframes": [
+                  { "id": "ir0", "position": 0, "connectedRight": true, "handles": [0.5, 1, 0.45, 0], "type": "bezier", "value": 0.08 },
+                  { "id": "ir1", "position": 2.0, "connectedRight": true, "handles": [0.15, 1, 0.5, 0], "type": "bezier", "value": 0 }
+                ]
+              }
+            },
+            "trackIdByPropPath": {
+              "[\"orbit\"]": "intro-orbit",
+              "[\"lift\"]": "intro-lift",
+              "[\"dolly\"]": "intro-dolly",
+              "[\"fov\"]": "intro-fov",
+              "[\"roll\"]": "intro-roll"
+            }
+          }
+        }
+      }
+    },
+    "Portal": {
+      "staticOverrides": { "byObject": {} },
+      "sequence": {
+        "subUnitsPerUnit": 30,
+        "length": 1.3,
+        "type": "PositionalSequence",
+        "tracksByObject": {
+          "Camera rig": {
+            "trackData": {
+              "portal-dolly": {
+                "type": "BasicKeyframedTrack",
+                "__debugName": "Camera rig:[\"dolly\"]",
+                "keyframes": [
+                  { "id": "pd0", "position": 0, "connectedRight": true, "handles": [0.5, 1, 0.5, 0], "type": "bezier", "value": 1 },
+                  { "id": "pd1", "position": 0.6, "connectedRight": true, "handles": [0.5, 1, 0.6, 0], "type": "bezier", "value": 1 },
+                  { "id": "pd2", "position": 1.3, "connectedRight": true, "handles": [0.8, 1, 0.5, 0], "type": "bezier", "value": 0.25 }
+                ]
+              },
+              "portal-fov": {
+                "type": "BasicKeyframedTrack",
+                "__debugName": "Camera rig:[\"fov\"]",
+                "keyframes": [
+                  { "id": "pf0", "position": 0, "connectedRight": true, "handles": [0.5, 1, 0.5, 0], "type": "bezier", "value": 45 },
+                  { "id": "pf1", "position": 0.5, "connectedRight": true, "handles": [0.5, 1, 0.7, 0], "type": "bezier", "value": 40 },
+                  { "id": "pf2", "position": 1.3, "connectedRight": true, "handles": [0.9, 1, 0.5, 0], "type": "bezier", "value": 85 }
+                ]
+              },
+              "portal-roll": {
+                "type": "BasicKeyframedTrack",
+                "__debugName": "Camera rig:[\"roll\"]",
+                "keyframes": [
+                  { "id": "pr0", "position": 0.4, "connectedRight": true, "handles": [0.5, 1, 0.6, 0], "type": "bezier", "value": 0 },
+                  { "id": "pr1", "position": 1.3, "connectedRight": true, "handles": [0.8, 1, 0.5, 0], "type": "bezier", "value": 0.12 }
+                ]
+              }
+            },
+            "trackIdByPropPath": {
+              "[\"dolly\"]": "portal-dolly",
+              "[\"fov\"]": "portal-fov",
+              "[\"roll\"]": "portal-roll"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitionVersion": "0.4.0",
+  "revisionHistory": ["hand-authored-v1"]
+}

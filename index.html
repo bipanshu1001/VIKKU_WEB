@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bipanshu Kashyap — Portfolio</title>
+  <meta name="description" content="Bipanshu Kashyap: B.Tech CSE student at Graphic Era University building ML and full-stack systems. Projects, skills, timeline and contact.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='7' width='26' height='16' rx='2' fill='%23ffb35c'/><rect x='1' y='24' width='30' height='3' rx='1' fill='%23f3efe6'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Coming back from space/: start black so the fly-out-of-the-window starts clean (main.js fades in).
+    // Fresh visit: also start black, so the Theatre.js intro shot is the first thing you see.
+    // Safety net: if the scripts never run, the fade lifts by itself and the plain page shows.
+    const freshVisit = !location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (location.hash === '#from-space' || freshVisit) {
+      document.documentElement.classList.add('fade');
+      setTimeout(() => document.documentElement.classList.remove('fade'), freshVisit ? 4500 : 3000);
+    }
+  </script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+        "motion": "https://cdn.jsdelivr.net/npm/motion@14.0.0/+esm",
+        "@theatre/core": "https://cdn.jsdelivr.net/npm/@theatre/core@0.7.2/+esm",
+        "@theatre/studio": "https://cdn.jsdelivr.net/npm/@theatre/studio@0.7.2/+esm"
+      }
+    }
+  </script>
+</head>
+<!-- Starts in "plain" mode: if the 3D script never loads, the page is still a normal readable resume. -->
+<body class="plain">
+  <canvas id="scene" aria-hidden="true"></canvas>
+
+  <header class="top">
+    <a class="brand" href="#">Bipanshu<span>.</span></a>
+    <nav aria-label="Sections">
+      <button data-go="about">About</button>
+      <button data-go="projects">Projects</button>
+      <button data-go="skills">Skills</button>
+      <button data-go="timeline">Timeline</button>
+      <button data-go="certs">Certificates</button>
+      <button data-go="contact">Contact</button>
+      <button data-go="space" class="space-btn">Space ✦</button>
+      <button id="plain-toggle" class="ghost" aria-pressed="true">3D view</button>
+    </nav>
+  </header>
+
+  <div id="hotspots"></div>
+  <div id="fade" aria-hidden="true"></div>
+
+  <div class="intro">
+    <p class="eyebrow">CS undergrad · Graphic Era University</p>
+    <h1>Hi, I'm <em>Bipanshu</em>.</h1>
+    <p>I build machine-learning and full-stack systems. Looking for a software engineering or ML internship.</p>
+    <p class="muted">Click anything on my desk to explore, or look out the window.</p>
+    <div class="cta">
+      <button class="btn primary" data-go="projects">See projects</button>
+      <a class="btn" href="resume.html">Resume</a>
+    </div>
+  </div>
+
+  <aside id="panel" aria-live="polite">
+    <button class="close">← Back to desk</button>
+
+    <div class="plain-hero">
+      <p class="eyebrow">CS undergrad · Graphic Era University</p>
+      <h1>Bipanshu Kashyap</h1>
+      <p class="lead">I build machine-learning and full-stack systems. Looking for a software engineering or ML internship.</p>
+      <p class="cta"><a class="btn primary" href="resume.html">Resume</a><a class="btn" href="#sec-contact">Contact</a></p>
+    </div>
+
+    <section class="content" data-key="about" id="sec-about">
+      <h2>About me</h2>
+      <p>Driven third-year Computer Science student with hands-on experience building machine-learning pipelines and full-stack applications. Skilled in designing CNN-based vision systems with real-time inference, graph-based recommendation engines, and plugin-style platform architectures. Strong algorithmic foundation with a 9.00 GPA.</p>
+      <ul class="facts">
+        <li><strong>Education</strong> B.Tech CSE, Graphic Era University, 2024–2028</li>
+        <li><strong>GPA</strong> 9.00 / 10.00</li>
+        <li><strong>Focus</strong> Machine learning &amp; computer vision, graph algorithms, backend</li>
+        <li><strong>Based in</strong> Dehradun, India</li>
+        <li><strong>Looking for</strong> SWE or ML internship</li>
+      </ul>
+      <h3>Interests &amp; Hobbies</h3>
+      <p>Problem-solving &amp; competitive coding · Exploring new tech &amp; side projects · Reading tech blogs &amp; research papers · Gaming · Music</p>
+      <h3>Currently Learning</h3>
+      <p>PyTorch &amp; deep learning architectures · LLMs, prompt engineering &amp; RAG pipelines</p>
+    </section>
+
+    <section class="content" data-key="projects" id="sec-projects">
+      <h2>Projects</h2>
+      <p class="muted">Problem → what I built → how I know it worked.</p>
+
+      <article class="card">
+        <header><h3>Emotion Detection System</h3><span class="date">Feb–May 2026</span></header>
+        <p><strong>Problem:</strong> recognise facial emotion live from a webcam feed, across 7 classes.</p>
+        <p><strong>Built:</strong> a 5-layer CNN with batch normalisation, trained on FER-2013 (35,887 images). OpenCV face detection and cropping, augmentation (rotation, flip, zoom) and dropout for robustness to lighting and pose.</p>
+        <p><strong>Result:</strong> under 200 ms per frame in live inference on consumer hardware.</p>
+        <p class="tags"><span>Python</span><span>TensorFlow</span><span>Keras</span><span>OpenCV</span></p>
+        <p class="links"><a href="https://github.com/bipanshu1007">Code ↗</a></p>
+      </article>
+
+      <article class="card">
+        <header><h3>Friend Recommendation with Token Economy</h3><span class="date">Jan–Feb 2026 · DAA project</span></header>
+        <p><strong>Problem:</strong> suggest relevant connections in a social app while discouraging spammy friend requests.</p>
+        <p><strong>Built:</strong> a C++ graph-based Top-K engine scoring similarity on shared interests and location. A token economy: earn on daily login, spend 2 per friend request and 1 per recommendation view, mutual reward on accepted connections. Node.js + Express REST API (5 endpoints) on SQLite, plus real-time WebSocket chat.</p>
+        <p><strong>Result:</strong> API responses under 100 ms per request.</p>
+        <p class="tags"><span>C++</span><span>Node.js</span><span>Express</span><span>SQLite</span><span>WebSockets</span></p>
+        <p class="links"><a href="https://github.com/bipanshu1007">Code ↗</a></p>
+      </article>
+
+      <article class="card">
+        <header><h3>GameHub: Centralised Gaming Platform</h3><span class="date">Aug–Dec 2025</span></header>
+        <p><strong>Problem:</strong> several standalone games, each launched separately, with no shared accounts or scores.</p>
+        <p><strong>Built:</strong> one authenticated hub for 4 games with a plugin-style architecture: adding a game needs one config file. SQLite scoreboards (score, global rank, play count) kept across sessions; guest vs registered roles.</p>
+        <p><strong>Result:</strong> a new game integrates in under 30 minutes.</p>
+        <p class="tags"><span>Python</span><span>SQLite</span><span>OOP</span></p>
+        <p class="links"><a href="https://github.com/bipanshu1007">Code ↗</a></p>
+      </article>
+
+      <article class="card small">
+        <header><h3>Train Reservation System</h3><span class="date">Sep–Nov 2024</span></header>
+        <p>Console app for booking, viewing and cancelling seats across 10 routes, with file-based persistence and input validation. My first DSA project.</p>
+        <p class="tags"><span>C++</span><span>Data structures</span></p>
+      </article>
+    </section>
+
+    <section class="content" data-key="skills" id="sec-skills">
+      <h2>Skills</h2>
+      <p class="muted">Every book on the shelf is something I've used in a project above.</p>
+      <div class="skill-groups">
+        <div><h3>Languages</h3><p class="tags"><span>Python</span><span>C++</span><span>C</span><span>JavaScript</span></p></div>
+        <div><h3>Machine learning</h3><p class="tags"><span>TensorFlow</span><span>Keras</span><span>scikit-learn</span><span>OpenCV</span><span>NumPy</span><span>Pandas</span><span>PyTorch (learning)</span></p></div>
+        <div><h3>Backend &amp; web</h3><p class="tags"><span>Node.js</span><span>Express</span><span>Flask</span><span>SQLite</span><span>REST APIs</span><span>WebSockets</span></p></div>
+        <div><h3>Cloud &amp; AI platforms</h3><p class="tags"><span>AWS SageMaker</span><span>Generative AI on AWS</span><span>Gemini API</span></p></div>
+        <div><h3>Foundations</h3><p class="tags"><span>Data structures &amp; algorithms</span><span>Graph algorithms</span><span>OOP</span><span>Probability &amp; statistics</span><span>Linear algebra</span></p></div>
+        <div><h3>Tools</h3><p class="tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>MATLAB</span></p></div>
+      </div>
+    </section>
+
+    <section class="content" data-key="timeline" id="sec-timeline">
+      <h2>Timeline</h2>
+      <ol class="timeline">
+        <li><span>2021</span>Class X (RBSE): 98.00%</li>
+        <li><span>2023</span>Class XII (RBSE): 89.40%</li>
+        <li><span>Aug 2024</span>Started B.Tech CSE at Graphic Era University</li>
+        <li><span>Sep 2024</span>Train Reservation System (C++)</li>
+        <li><span>Aug 2025</span>GameHub (Python, SQLite)</li>
+        <li><span>Oct 2025</span>AWS course: The Machine Learning Pipeline on AWS</li>
+        <li><span>Dec 2025</span>AWS course: Developing Generative AI Solutions</li>
+        <li><span>Jan 2026</span>Friend Recommendation System (C++, Node.js)</li>
+        <li><span>Feb 2026</span>Emotion Detection System (TensorFlow, OpenCV)</li>
+        <li class="next"><span>Next</span>Software engineering / ML internship</li>
+      </ol>
+    </section>
+
+    <section class="content" data-key="certs" id="sec-certs">
+      <h2>Certificates</h2>
+      <p class="muted">Training courses completed through AWS Training &amp; Certification.</p>
+      <ul class="facts">
+        <li><strong>Oct 2025</strong> The Machine Learning Pipeline on AWS</li>
+        <li><strong>Dec 2025</strong> Developing Generative Artificial Intelligence Solutions</li>
+      </ul>
+    </section>
+
+    <section class="content" data-key="contact" id="sec-contact">
+      <h2>Contact</h2>
+      <p>Open to internship opportunities in software engineering and machine learning. Email is the fastest way to reach me.</p>
+      <p class="cta">
+        <a class="btn primary" href="mailto:kashyapbipanshu@gmail.com">kashyapbipanshu@gmail.com</a>
+        <a class="btn" href="https://github.com/bipanshu1007">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/bipanshu-kashyap-925785321">LinkedIn</a>
+      </p>
+    </section>
+
+    <p class="muted small footer">© <span id="year"></span> Bipanshu Kashyap · Built with Three.js, Theatre.js &amp; Motion</p>
+  </aside>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

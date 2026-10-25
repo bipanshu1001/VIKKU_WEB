@@ -1,0 +1,141 @@
+:root {
+  --bg: #02030a;
+  --ink: #e9ecff;
+  --muted: #9aa3c7;
+  --accent: #7cf0d4;
+  --accent-2: #ff9d6c;
+  --panel: rgba(8, 10, 28, 0.66);
+  --line: rgba(255, 255, 255, 0.12);
+  --radius: 20px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 70% 30%, #101640 0%, var(--bg) 60%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font: 400 1.05rem/1.6 "Space Grotesk", system-ui, sans-serif;
+}
+
+/* 3D canvas sits behind everything; sections let pointer events fall through to it. */
+#scene { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; display: block; }
+main { position: relative; z-index: 1; pointer-events: none; }
+.panel, .nav { pointer-events: auto; }
+
+/* ---------- nav ---------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 5;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.9rem clamp(1rem, 4vw, 2.5rem);
+  background: linear-gradient(to bottom, rgba(2,3,10,.8), transparent);
+}
+.brand { font-weight: 700; font-size: 1.3rem; color: var(--ink); text-decoration: none; }
+.brand span { color: var(--accent); }
+.nav nav { display: flex; gap: clamp(.7rem, 2vw, 1.6rem); }
+.nav nav a {
+  color: var(--muted); text-decoration: none; font-size: .95rem;
+  padding: .2rem 0; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s;
+}
+.nav nav a:hover, .nav nav a[aria-current="true"] { color: var(--ink); border-color: var(--accent); }
+
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 6; }
+.progress span { display: block; height: 100%; width: calc(var(--p, 0) * 100%); background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+
+/* ---------- sections & panels ---------- */
+section {
+  min-height: 100vh; min-height: 100svh;
+  display: flex; align-items: center;
+  padding: 5.5rem clamp(1rem, 6vw, 5rem) 3rem;
+}
+/* Panel side alternates so the planet stays visible on the other side. Must match `side` in main.js. */
+#home, #projects, #contact { justify-content: flex-start; }
+#about, #skills { justify-content: flex-end; }
+
+.panel {
+  width: min(520px, 100%);
+  padding: clamp(1.2rem, 3vw, 2rem);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.panel.wide { width: min(860px, 72vw); }
+.panel.hero { background: transparent; border: 0; backdrop-filter: none; padding-left: 0; width: min(640px, 100%); }
+
+h1, h2, h3 { line-height: 1.1; margin: 0 0 .6em; }
+h1 { font-size: clamp(2.4rem, 7vw, 4.6rem); }
+h1 em { font-style: normal; color: var(--accent); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+h3 { font-size: 1.15rem; }
+p { margin: 0 0 .9em; }
+.lead { font-size: 1.25rem; color: var(--ink); }
+.eyebrow { color: var(--accent-2); letter-spacing: .08em; text-transform: uppercase; font-size: .85rem; }
+.muted { color: var(--muted); }
+.small { font-size: .85rem; }
+.hint { color: var(--muted); margin-top: 2rem; }
+
+a { color: var(--accent); }
+.cta { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.4rem 0 0; }
+.btn {
+  display: inline-block; padding: .65rem 1.2rem; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--ink); text-decoration: none; background: rgba(255,255,255,.04);
+  transition: transform .2s, background .2s;
+}
+.btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.1); }
+.btn.primary { background: var(--accent); color: #031612; border-color: transparent; font-weight: 700; }
+
+.facts { list-style: none; margin: 0; padding: 0; }
+.facts li { padding: .55rem 0; border-top: 1px solid var(--line); }
+.facts strong { display: inline-block; min-width: 7.5rem; color: var(--muted); font-weight: 500; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.card { padding: 1.1rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.03); font-size: .95rem; transition: transform .25s, border-color .25s; }
+.card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.card p { margin-bottom: .5em; }
+
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+.tags span { padding: .15rem .65rem; border-radius: 999px; background: rgba(124,240,212,.1); color: var(--accent); font-size: .82rem; }
+.skill-groups { display: grid; gap: .6rem; }
+.skill-groups h3 { margin-bottom: .3em; color: var(--muted); font-weight: 500; font-size: .95rem; }
+
+.todo { color: #ff8f8f; font-size: .85em; } /* visible on purpose: remove each one before sharing */
+
+/* ---------- link back to the desk + fade used for the window transition ---------- */
+.back-desk {
+  position: fixed; right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem); z-index: 6;
+  padding: .55rem 1.1rem; border-radius: 999px; text-decoration: none; font-size: .9rem;
+  color: #2a1600; background: #ffb35c; font-weight: 700; box-shadow: 0 6px 24px rgba(255,179,92,.3);
+}
+.back-desk:hover { transform: translateY(-2px); }
+#fade { position: fixed; inset: 0; z-index: 20; background: #02030a; opacity: 0; pointer-events: none; transition: opacity .6s ease; }
+.fade #fade { opacity: 1; }
+
+.noscript { position: fixed; bottom: 0; margin: 0; padding: .5rem 1rem; background: #000; z-index: 9; }
+
+/* ---------- reveal animation: only when Three.js booted, so content never stays hidden ---------- */
+.three-ready .panel { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+.three-ready section.is-active .panel { opacity: 1; transform: none; }
+
+@media (max-height: 720px) {
+  section { padding-top: 4.5rem; }
+  h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); }
+}
+
+/* ---------- small screens: planet in upper half, panel at the bottom ---------- */
+@media (max-width: 900px) {
+  .nav nav { gap: .8rem; }
+  .nav nav a { font-size: .85rem; }
+}
+@media (max-width: 760px) {
+  .nav nav a:nth-child(1) { display: none; }
+  section { align-items: flex-end; justify-content: center !important; padding-top: 40vh; }
+  .panel, .panel.wide { width: 100%; }
+  .panel.hero { padding-left: clamp(1.2rem, 3vw, 2rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .three-ready .panel, .btn, .card { transition: none; }
+}

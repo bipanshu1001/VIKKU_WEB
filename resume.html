@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bipanshu Kashyap — Resume</title>
+  <meta name="description" content="Resume of Bipanshu Kashyap: B.Tech CSE student at Graphic Era University specialising in machine learning and full-stack development.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='7' width='26' height='16' rx='2' fill='%23ffb35c'/><rect x='1' y='24' width='30' height='3' rx='1' fill='%23f3efe6'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       Tokens — same palette as the portfolio
+       ============================================================ */
+    :root {
+      --bg:       #0e1025;
+      --bg-card:  rgba(20, 23, 46, 0.72);
+      --ink:      #f3efe6;
+      --muted:    #aaa7ba;
+      --accent:   #ffb35c;
+      --accent-2: #7cc4ff;
+      --accent-3: #7cf0d4;
+      --line:     rgba(255, 255, 255, 0.10);
+      --line-br:  rgba(255, 255, 255, 0.06);
+      --radius:   16px;
+    }
+
+    /* ============================================================
+       Reset + body
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 120% 80% at 80% 10%, rgba(124,196,255,.06) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 70% at 20% 90%, rgba(255,179,92,.04) 0%, transparent 50%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font: 400 1rem/1.65 "Space Grotesk", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============================================================
+       Layout
+       ============================================================ */
+    .page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem clamp(1.2rem, 4vw, 2.5rem) 4rem;
+    }
+
+    /* ============================================================
+       Header / hero
+       ============================================================ */
+    .hero {
+      text-align: center;
+      padding: 2.5rem 1rem 2rem;
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 8px 30px rgba(255,107,74,0.35);
+      border: 3px solid rgba(255,255,255,0.15);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: .3em;
+    }
+    .hero h1 span { color: var(--accent); }
+
+    .hero .tagline {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto .8rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .5rem .9rem;
+      margin-top: 1.2rem;
+    }
+    .contact-row a {
+      display: inline-flex; align-items: center; gap: .35rem;
+      color: var(--accent-2);
+      text-decoration: none;
+      font-size: .92rem;
+      padding: .3rem .7rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      transition: border-color .25s, background .25s, transform .25s;
+    }
+    .contact-row a:hover {
+      border-color: var(--accent-2);
+      background: rgba(124,196,255,.08);
+      transform: translateY(-1px);
+    }
+    .contact-row .icon { font-size: 1.1rem; }
+
+    /* ============================================================
+       Section titles
+       ============================================================ */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 2.6rem 0 1.1rem;
+      color: var(--ink);
+    }
+    .section-title::before {
+      content: "";
+      width: 4px; height: 1.35rem;
+      border-radius: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      flex: none;
+    }
+    .section-title .emoji { font-size: 1.15rem; }
+
+    /* ============================================================
+       Summary card
+       ============================================================ */
+    .summary {
+      padding: 1.2rem 1.4rem;
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      color: var(--ink);
+      font-size: .98rem;
+      line-height: 1.7;
+      position: relative;
+      overflow: hidden;
+    }
+    .summary::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+    }
+
+    /* ============================================================
+       Education
+       ============================================================ */
+    .edu-grid {
+      display: grid;
+      gap: .8rem;
+    }
+    .edu-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: .3rem 1.2rem;
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+    }
+    .edu-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .edu-card .meta {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .edu-card .detail {
+      width: 100%;
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: .15rem;
+    }
+    .edu-card .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       Projects
+       ============================================================ */
+    .project-grid {
+      display: grid;
+      gap: .9rem;
+    }
+    .project-card {
+      padding: 1.2rem 1.3rem;
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      transition: border-color .3s, transform .3s;
+    }
+    .project-card:hover {
+      border-color: rgba(255,179,92,.3);
+      transform: translateY(-2px);
+    }
+    .project-card header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: .2rem .8rem;
+      margin-bottom: .55rem;
+    }
+    .project-card h3 {
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .project-card .date {
+      color: var(--muted);
+      font-size: .82rem;
+    }
+    .project-card p {
+      font-size: .93rem;
+      margin-bottom: .45rem;
+      color: rgba(243,239,230,.85);
+    }
+    .project-card p strong {
+      color: var(--ink);
+    }
+
+    /* ============================================================
+       Tags
+       ============================================================ */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      margin-top: .4rem;
+    }
+    .tags span {
+      padding: .12rem .6rem;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 500;
+    }
+    .tags .lang    { background: rgba(124,196,255,.12); color: var(--accent-2); }
+    .tags .ml      { background: rgba(255,179,92,.12);  color: var(--accent); }
+    .tags .backend { background: rgba(124,240,212,.10); color: var(--accent-3); }
+    .tags .tool    { background: rgba(255,255,255,.07); color: var(--muted); }
+
+    /* ============================================================
+       Skills
+       ============================================================ */
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: .7rem;
+    }
+    .skill-card {
+      padding: 1rem 1.1rem;
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+    }
+    .skill-card h3 {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: .5rem;
+    }
+
+    /* ============================================================
+       Certifications
+       ============================================================ */
+    .cert-list {
+      display: grid;
+      gap: .6rem;
+    }
+    .cert-item {
+      display: flex;
+      align-items: baseline;
+      gap: .8rem;
+      padding: .85rem 1.1rem;
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+    }
+    .cert-item .cert-date {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: .88rem;
+      white-space: nowrap;
+      min-width: 5.5rem;
+    }
+    .cert-item .cert-name {
+      font-size: .95rem;
+    }
+    .cert-item .cert-org {
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    /* ============================================================
+       Two-column row (Hobbies + Goals)
+       ============================================================ */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+    }
+    @media (max-width: 600px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+    .info-card {
+      padding: 1.1rem 1.2rem;
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+    }
+    .info-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: .6rem;
+    }
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .info-card li {
+      padding: .3rem 0;
+      font-size: .92rem;
+      color: rgba(243,239,230,.85);
+      display: flex;
+      align-items: baseline;
+      gap: .45rem;
+    }
+    .info-card li .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex: none;
+      margin-top: .45rem;
+    }
+    .info-card li .dot.orange { background: var(--accent); }
+    .info-card li .dot.blue   { background: var(--accent-2); }
+    .info-card li .dot.green  { background: var(--accent-3); }
+
+    /* ============================================================
+       Back link + footer
+       ============================================================ */
+    .back-bar {
+      display: flex;
+      justify-content: center;
+      gap: .7rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+    .back-bar a {
+      display: inline-block;
+      padding: .6rem 1.2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 600;
+      transition: transform .2s, background .2s;
+    }
+    .back-bar a:hover { transform: translateY(-2px); }
+    .back-bar .desk {
+      background: var(--accent);
+      color: #2a1600;
+    }
+    .back-bar .space {
+      background: rgba(124,240,212,.15);
+      color: var(--accent-3);
+      border: 1px solid rgba(124,240,212,.25);
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .82rem;
+      margin-top: 1.5rem;
+    }
+
+    /* ============================================================
+       Print styles — clean, ink-friendly
+       ============================================================ */
+    @media print {
+      :root {
+        --bg: #fff;
+        --bg-card: #f8f8f8;
+        --ink: #1a1a1a;
+        --muted: #666;
+        --accent: #b87a2a;
+        --accent-2: #3a6fa0;
+        --accent-3: #2a8a6a;
+        --line: rgba(0,0,0,.1);
+      }
+      body { background: #fff; font-size: 10pt; }
+      .page { padding: 0; max-width: 100%; }
+      .hero { padding: 1.5rem 0 1rem; }
+      .avatar { display: none; }
+      .contact-row a { border: 0; padding: .1rem .3rem; color: var(--accent-2); }
+      .section-title { margin: 1.5rem 0 .6rem; font-size: 1.15rem; }
+      .project-card:hover, .contact-row a:hover, .back-bar a:hover { transform: none; }
+      .back-bar { display: none; }
+      @page { margin: 1.5cm; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .avatar { animation: none; }
+      .project-card, .contact-row a, .back-bar a { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ====== HERO ====== -->
+    <div class="hero">
+      <div class="avatar" aria-hidden="true">BK</div>
+      <h1>Bipanshu <span>Kashyap</span></h1>
+      <p class="tagline">B.Tech CSE · Graphic Era University · Dehradun, India</p>
+      <div class="contact-row">
+        <a href="mailto:kashyapbipanshu@gmail.com"><span class="icon">✉</span> kashyapbipanshu@gmail.com</a>
+        <a href="https://github.com/bipanshu1007" target="_blank" rel="noopener"><span class="icon">⌘</span> GitHub</a>
+        <a href="https://www.linkedin.com/in/bipanshu-kashyap-925785321" target="_blank" rel="noopener"><span class="icon">in</span> LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- ====== SUMMARY ====== -->
+    <h2 class="section-title"><span class="emoji">◆</span> Summary</h2>
+    <div class="summary">
+      Driven third-year Computer Science student with hands-on experience building machine-learning pipelines and full-stack applications. Skilled in designing CNN-based vision systems with real-time inference, graph-based recommendation engines, and plugin-style platform architectures. Strong algorithmic foundation with a 9.00 GPA. Actively seeking a software engineering or machine learning internship to apply and grow these skills in a production environment.
+    </div>
+
+    <!-- ====== EDUCATION ====== -->
+    <h2 class="section-title"><span class="emoji">◆</span> Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h3>B.Tech — Computer Science & Engineering</h3>
+        <span class="meta">2024 – 2028</span>
+        <p class="detail">Graphic Era University, Dehradun &nbsp;·&nbsp; GPA: <span class="highlight">9.00 / 10.00</span></p>
+      </div>
+      <div class="edu-card">
+        <h3>Class XII — RBSE</h3>
+        <span class="meta">2023</span>
+        <p class="detail">Percentage: <span class="highlight">89.40%</span></p>
+      </div>
+      <div class="edu-card">
+        <h3>Class X — RBSE</h3>
+        <span class="meta">2021</span>
+        <p class="detail">Percentage: <span class="highlight">98.00%</span></p>
+      </div>
+    </div>
+
+    <!-- ====== PROJECTS ====== -->
+    <h2 class="section-title"><span class="emoji">◆</span> Projects</h2>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <header>
+          <h3>Emotion Detection System</h3>
+          <span class="date">Feb – May 2026</span>
+        </header>
+        <p><strong>Problem:</strong> Recognise facial emotion live from a webcam feed, across 7 expression classes.</p>
+        <p><strong>Built:</strong> A 5-layer CNN with batch normalisation, trained on FER-2013 (35,887 images). OpenCV face detection and cropping, augmentation (rotation, flip, zoom) and dropout for robustness to lighting and pose.</p>
+        <p><strong>Result:</strong> Under 200 ms per frame in live inference on consumer hardware.</p>
+        <div class="tags">
+          <span class="ml">Python</span>
+          <span class="ml">TensorFlow</span>
+          <span class="ml">Keras</span>
+          <span class="ml">OpenCV</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <header>
+          <h3>Friend Recommendation with Token Economy</h3>
+          <span class="date">Jan – Feb 2026</span>
+        </header>
+        <p><strong>Problem:</strong> Suggest relevant connections in a social app while discouraging spammy friend requests.</p>
+        <p><strong>Built:</strong> A C++ graph-based Top-K engine scoring similarity on shared interests and location. A token economy: earn on daily login, spend 2 per friend request and 1 per recommendation view, mutual reward on accepted connections. Node.js + Express REST API (5 endpoints) on SQLite, plus real-time WebSocket chat.</p>
+        <p><strong>Result:</strong> API responses under 100 ms per request.</p>
+        <div class="tags">
+          <span class="lang">C++</span>
+          <span class="backend">Node.js</span>
+          <span class="backend">Express</span>
+          <span class="backend">SQLite</span>
+          <span class="backend">WebSockets</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <header>
+          <h3>GameHub: Centralised Gaming Platform</h3>
+          <span class="date">Aug – Dec 2025</span>
+        </header>
+        <p><strong>Problem:</strong> Several standalone games, each launched separately, with no shared accounts or scores.</p>
+        <p><strong>Built:</strong> One authenticated hub for 4 games with a plugin-style architecture: adding a game needs one config file. SQLite scoreboards (score, global rank, play count) kept across sessions; guest vs registered roles.</p>
+        <p><strong>Result:</strong> A new game integrates in under 30 minutes.</p>
+        <div class="tags">
+          <span class="ml">Python</span>
+          <span class="backend">SQLite</span>
+          <span class="tool">OOP</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <header>
+          <h3>Train Reservation System</h3>
+          <span class="date">Sep – Nov 2024</span>
+        </header>
+        <p>Console app for booking, viewing and cancelling seats across 10 routes, with file-based persistence and input validation. First DSA project.</p>
+        <div class="tags">
+          <span class="lang">C++</span>
+          <span class="tool">Data Structures</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ====== SKILLS ====== -->
+    <h2 class="section-title"><span class="emoji">◆</span> Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <div class="tags">
+          <span class="lang">Python</span>
+          <span class="lang">C++</span>
+          <span class="lang">C</span>
+          <span class="lang">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Machine Learning</h3>
+        <div class="tags">
+          <span class="ml">TensorFlow</span>
+          <span class="ml">Keras</span>
+          <span class="ml">scikit-learn</span>
+          <span class="ml">OpenCV</span>
+          <span class="ml">NumPy</span>
+          <span class="ml">Pandas</span>
+          <span class="ml">PyTorch (learning)</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Backend & Web</h3>
+        <div class="tags">
+          <span class="backend">Node.js</span>
+          <span class="backend">Express</span>
+          <span class="backend">Flask</span>
+          <span class="backend">SQLite</span>
+          <span class="backend">REST APIs</span>
+          <span class="backend">WebSockets</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Cloud & AI Platforms</h3>
+        <div class="tags">
+          <span class="tool">AWS SageMaker</span>
+          <span class="tool">Generative AI on AWS</span>
+          <span class="tool">Gemini API</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Foundations</h3>
+        <div class="tags">
+          <span class="tool">Data Structures & Algorithms</span>
+          <span class="tool">Graph Algorithms</span>
+          <span class="tool">OOP</span>
+          <span class="tool">Probability & Statistics</span>
+          <span class="tool">Linear Algebra</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Tools</h3>
+        <div class="tags">
+          <span class="tool">Git</span>
+          <span class="tool">GitHub</span>
+          <span class="tool">VS Code</span>
+          <span class="tool">MATLAB</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== CERTIFICATIONS ====== -->
+    <h2 class="section-title"><span class="emoji">◆</span> Certifications</h2>
+    <div class="cert-list">
+      <div class="cert-item">
+        <span class="cert-date">Oct 2025</span>
+        <div>
+          <span class="cert-name">The Machine Learning Pipeline on AWS</span><br>
+          <span class="cert-org">AWS Training & Certification</span>
+        </div>
+      </div>
+      <div class="cert-item">
+        <span class="cert-date">Dec 2025</span>
+        <div>
+          <span class="cert-name">Developing Generative Artificial Intelligence Solutions</span><br>
+          <span class="cert-org">AWS Training & Certification</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== HOBBIES + GOALS ====== -->
+    <div class="two-col" style="margin-top: 2.6rem;">
+      <div class="info-card">
+        <h3>Interests & Hobbies</h3>
+        <ul>
+          <li><span class="dot orange" aria-hidden="true"></span> Problem-solving & competitive coding</li>
+          <li><span class="dot blue" aria-hidden="true"></span> Exploring new tech & side projects</li>
+          <li><span class="dot green" aria-hidden="true"></span> Reading tech blogs & research papers</li>
+          <li><span class="dot orange" aria-hidden="true"></span> Gaming</li>
+          <li><span class="dot blue" aria-hidden="true"></span> Music</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>Currently Learning</h3>
+        <ul>
+          <li><span class="dot orange" aria-hidden="true"></span> PyTorch & deep learning architectures</li>
+          <li><span class="dot green" aria-hidden="true"></span> LLMs, prompt engineering & RAG pipelines</li>
+        </ul>
+        <h3 style="margin-top: 1rem;">Goal</h3>
+        <ul>
+          <li><span class="dot blue" aria-hidden="true"></span> Software engineering or ML internship at a company solving real-world problems</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ====== BACK LINKS ====== -->
+    <div class="back-bar">
+      <a class="desk" href="./">← Back to my desk</a>
+      <a class="space" href="./space/">Explore space ✦</a>
+    </div>
+
+    <p class="footer">© <span id="year"></span> Bipanshu Kashyap</p>
+  </div>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
