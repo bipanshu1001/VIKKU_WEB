@@ -98,7 +98,7 @@ function start() {
   fill.position.set(1.2, 3, 2.5);
   scene.add(fill);
 
-  const { interactive, lamp, screenTex, boyAnim } = buildRoom(scene);
+  const { interactive, lamp, screenTex } = buildRoom(scene);
 
   // ---------- camera state + fly-to tween ----------
   const view = { pos: new THREE.Vector3(), target: new THREE.Vector3() };
@@ -315,7 +315,6 @@ function start() {
     requestAnimationFrame(frame);
     if (body.classList.contains('plain')) return;
     const dt = Math.min(clock.getDelta(), 0.05);
-    if (!reduced && boyAnim) boyAnim.update(clock.getElapsedTime());
 
     if (tween) {
       tween.t = Math.min(1, tween.t + dt / 1.1);
@@ -578,13 +577,13 @@ function buildRoom(scene) {
   });
   clickable(certs, 'certs');
 
-  // ---- chair & boy working on laptop ----
+  // ---- desk chair ----
   const chairMat = std('#1d212c', { roughness: 0.65 });
   const chairMetal = std('#13151b', { roughness: 0.35, metalness: 0.7 });
-  const boyX = -0.1, boyZ = 0.44;
+  const chairX = -0.1, chairZ = 0.44;
 
   // Chair
-  const chair = group(scene, boyX, 0, boyZ);
+  const chair = group(scene, chairX, 0, chairZ);
   // 5 caster wheel legs radiating on the floor
   for (let i = 0; i < 5; i++) {
     const ang = (i / 5) * Math.PI * 2;
@@ -607,132 +606,7 @@ function buildRoom(scene) {
     add(chair, rbox(0.05, 0.018, 0.18, 0.008), chairMat, sx, 0.61, 0.02);
   }
 
-  // Boy (Character)
-  const boy = group(scene, boyX, 0, boyZ);
-  const skin = std('#dfa785', { roughness: 0.65 });
-  const hoodieMat = std('#26374f', { roughness: 0.85 }); // modern deep navy hoodie
-  const pantsMat = std('#181f2c', { roughness: 0.9 });   // dark denim trousers
-  const hairMat = std('#161413', { roughness: 0.95 });   // dark textured hair
-  const shoeSole = std('#f0f2f5', { roughness: 0.5 });
-  const shoeUpper = std('#2f333d', { roughness: 0.7 });
-  const accentOrange = std('#ff6b4a', { roughness: 0.4 }); // portfolio accent
-  const headphoneMat = std('#1c1e24', { roughness: 0.35, metalness: 0.6 });
-
-  // Legs & Shoes
-  for (const sx of [-0.08, 0.08]) {
-    // Thigh extending forward toward desk
-    add(boy, rbox(0.095, 0.085, 0.24, 0.025), pantsMat, sx, 0.47, -0.11);
-    // Knee joint
-    add(boy, new THREE.SphereGeometry(0.046, 14, 10), pantsMat, sx, 0.46, -0.23);
-    // Lower leg / shin going down to floor
-    add(boy, rbox(0.08, 0.36, 0.08, 0.02), pantsMat, sx, 0.25, -0.23);
-    // Sneaker sole
-    add(boy, rbox(0.09, 0.028, 0.18, 0.008), shoeSole, sx, 0.014, -0.21);
-    // Sneaker upper
-    add(boy, rbox(0.084, 0.05, 0.16, 0.015), shoeUpper, sx, 0.048, -0.21);
-    // Sneaker accent stripe
-    add(boy, new THREE.BoxGeometry(0.088, 0.012, 0.07), accentOrange, sx, 0.048, -0.22);
-  }
-
-  // Torso Pivot (for natural breathing motion and slight lean towards laptop)
-  const torsoPivot = group(boy, 0, 0.47, 0);
-  torsoPivot.rotation.x = 0.12; // focused programmer lean towards screen
-
-  // Pelvis / base of hoodie
-  add(torsoPivot, rbox(0.26, 0.1, 0.18, 0.03), pantsMat, 0, 0.05, 0);
-  // Hoodie body
-  add(torsoPivot, rbox(0.28, 0.3, 0.17, 0.04), hoodieMat, 0, 0.21, -0.01);
-  // Front kangaroo pocket
-  add(torsoPivot, rbox(0.18, 0.1, 0.03, 0.01), hoodieMat, 0, 0.14, -0.095);
-  // Hoodie strings
-  add(torsoPivot, new THREE.CylinderGeometry(0.003, 0.003, 0.1, 8), std('#e2e6f0'), -0.035, 0.26, -0.1).rotation.z = 0.08;
-  add(torsoPivot, new THREE.CylinderGeometry(0.003, 0.003, 0.1, 8), std('#e2e6f0'), 0.035, 0.26, -0.1).rotation.z = -0.08;
-  // Folded hood collar around back of neck
-  add(torsoPivot, new THREE.TorusGeometry(0.075, 0.028, 12, 24, Math.PI * 1.4), hoodieMat, 0, 0.34, 0.04).rotation.x = 0.6;
-
-  // Neck
-  add(torsoPivot, new THREE.CylinderGeometry(0.036, 0.04, 0.08, 16), skin, 0, 0.36, -0.02);
-
-  // Head Pivot (for looking at screen + music nodding)
-  const headPivot = group(torsoPivot, 0, 0.43, -0.03);
-  headPivot.rotation.x = 0.14; // angled down towards the glowing screen
-
-  // Face / head mesh
-  add(headPivot, rbox(0.155, 0.17, 0.155, 0.045), skin, 0, 0, 0);
-  // Stylized nose
-  add(headPivot, new THREE.ConeGeometry(0.014, 0.024, 8), skin, 0, -0.005, -0.085).rotation.x = -Math.PI / 2;
-  // Ears
-  add(headPivot, new THREE.SphereGeometry(0.02, 10, 8), skin, -0.08, 0, -0.01).scale.set(0.4, 1, 0.8);
-  add(headPivot, new THREE.SphereGeometry(0.02, 10, 8), skin, 0.08, 0, -0.01).scale.set(0.4, 1, 0.8);
-
-  // Hair
-  const hairGroup = group(headPivot, 0, 0, 0);
-  add(hairGroup, rbox(0.165, 0.08, 0.165, 0.035), hairMat, 0, 0.065, 0);
-  // Layered front bangs
-  const bangs = add(hairGroup, rbox(0.145, 0.055, 0.05, 0.02), hairMat, 0, 0.05, -0.072);
-  bangs.rotation.x = -0.2;
-  // Back & side hair taper
-  add(hairGroup, rbox(0.162, 0.11, 0.08, 0.025), hairMat, 0, -0.01, 0.05);
-
-  // Modern Over-Ear Headphones
-  const hpBand = add(headPivot, new THREE.TorusGeometry(0.096, 0.009, 12, 32, Math.PI), headphoneMat, 0, 0.02, 0);
-  hpBand.rotation.z = Math.PI;
-  for (const sx of [-0.086, 0.086]) {
-    // Outer shell
-    add(headPivot, new THREE.CylinderGeometry(0.03, 0.032, 0.02, 20), headphoneMat, sx, 0, 0).rotation.z = Math.PI / 2;
-    // Orange accent ring cushion
-    add(headPivot, new THREE.TorusGeometry(0.026, 0.007, 10, 24), accentOrange, sx > 0 ? sx + 0.008 : sx - 0.008, 0, 0).rotation.y = Math.PI / 2;
-  }
-
-  // Developer Glasses
-  const glassesMat = std('#181a20', { roughness: 0.3, metalness: 0.8 });
-  const glasses = group(headPivot, 0, 0.015, -0.082);
-  add(glasses, new THREE.BoxGeometry(0.042, 0.028, 0.006), glassesMat, -0.032, 0, 0);
-  add(glasses, new THREE.BoxGeometry(0.042, 0.028, 0.006), glassesMat, 0.032, 0, 0);
-  add(glasses, new THREE.BoxGeometry(0.024, 0.004, 0.006), glassesMat, 0, 0.006, 0); // bridge
-
-  // Arms and Hands (Actively Typing on the Laptop!)
-  // Left Upper Arm (shoulder to elbow)
-  const leftUpperArm = add(torsoPivot, rbox(0.07, 0.22, 0.07, 0.02), hoodieMat, -0.17, 0.2, -0.1);
-  leftUpperArm.rotation.set(0.65, 0.25, 0.35);
-
-  // Right Upper Arm
-  const rightUpperArm = add(torsoPivot, rbox(0.07, 0.22, 0.07, 0.02), hoodieMat, 0.17, 0.2, -0.1);
-  rightUpperArm.rotation.set(0.65, -0.25, -0.35);
-
-  // Left Forearm (resting on desk surface, extending towards keyboard)
-  const leftForearm = add(boy, rbox(0.065, 0.06, 0.24, 0.02), hoodieMat, -0.14, 0.762, -0.26);
-  leftForearm.rotation.set(0.04, -0.28, 0);
-
-  // Right Forearm (extending towards keyboard & trackpad)
-  const rightForearm = add(boy, rbox(0.065, 0.06, 0.24, 0.02), hoodieMat, 0.11, 0.762, -0.25);
-  rightForearm.rotation.set(0.04, 0.24, 0);
-
-  // Left Hand (curled over keys ASDF)
-  const leftHand = group(boy, -0.07, 0.768, -0.39);
-  add(leftHand, rbox(0.055, 0.024, 0.065, 0.01), skin, 0, 0, 0);
-  add(leftHand, rbox(0.052, 0.016, 0.035, 0.008), skin, 0, -0.005, -0.038).rotation.x = 0.25;
-
-  // Right Hand (curled over right keys & trackpad)
-  const rightHand = group(boy, 0.035, 0.768, -0.38);
-  add(rightHand, rbox(0.055, 0.024, 0.065, 0.01), skin, 0, 0, 0);
-  add(rightHand, rbox(0.052, 0.016, 0.035, 0.008), skin, 0, -0.005, -0.038).rotation.x = 0.25;
-
-  clickable(boy, 'about');
-
-  // Animation controller for typing and breathing
-  const boyAnim = {
-    update(time) {
-      torsoPivot.rotation.x = 0.12 + Math.sin(time * 2.2) * 0.008;
-      headPivot.rotation.x = 0.14 + Math.sin(time * 1.6) * 0.012;
-      headPivot.rotation.y = Math.sin(time * 0.9) * 0.018;
-      leftHand.position.y = 0.768 + Math.sin(time * 13) * 0.0016;
-      rightHand.position.y = 0.768 + Math.cos(time * 15 + 1) * 0.0016;
-      rightHand.position.x = 0.035 + Math.sin(time * 2.5) * 0.004;
-    }
-  };
-
-  return { interactive, lamp, screenTex, boyAnim };
+  return { interactive, lamp, screenTex };
 }
 
 // =====================================================================
